@@ -1,0 +1,160 @@
+f/* Основний контейнер */
+.task-list-wrapper {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Шапка сторінки */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #f3f4f6;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 24px;
+  color: #1f2937;
+  margin: 0;
+}
+
+/* Блок вибору категорії */
+.filter-container {
+  background-color: #f9fafb;
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-container label {
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.filter-container select {
+  font-size: 14px;
+  color: #1f2937;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.filter-container select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Стан завантаження та помилки */
+.loading {
+  text-align: center;
+  color: #4b5563;
+  font-size: 16px;
+  padding: 20px;
+}
+
+.error-msg {
+  color: #dc2626;
+  background-color: #fef2f2;
+  border: 1px solid #fee2e2;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+/* Таблиця */
+.table-container {
+  overflow-x: auto;
+  margin-top: 15px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.task-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.task-table th {
+  background-color: #f8fafc;
+  color: #64748b;
+  font-weight: 600;
+  padding: 12px 16px;
+  font-size: 13px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.task-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #334155;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.task-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+/* Елементи всередині таблиці */
+.task-name {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.task-desc {
+  font-size: 13px;
+  color: #64748b;
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Бейджі (Категорії та Типи) */
+.badge-blue, .badge-green, .badge-gray {
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 9999px;
+  text-align: center;
+}
+
+.badge-blue {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.badge-green {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.badge-gray {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+/* Допоміжні класи (якщо у вас не підключено Tailwind) */
+.text-center {
+  text-align: center;
+}
+
+.mt-4 {
+  margin-top: 16px;
+}
+
+.text-gray-500 {
+  color: #6b7280;
+}

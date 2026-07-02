@@ -1,0 +1,58 @@
+<div class="task-card">
+  <h2 class="form-title">
+  {{ taskToEdit ? '✏️ Редагувати завдання' : '➕ Створити нове завдання' }}
+</h2>
+  
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    
+    <div class="form-group">
+      <label class="form-label">Task Name *</label>
+      <input type="text" formControlName="toDo" placeholder="Enter task name" class="input-field">
+      <p *ngIf="taskForm.get('toDo')?.invalid && taskForm.get('toDo')?.touched" class="error-text">
+        Task name is required
+      </p>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Description</label>
+      <textarea formControlName="description" placeholder="Add task details..." rows="3" class="input-field textarea-field"></textarea>
+    </div>
+
+    <div class="form-group">
+  <label class="form-label">Due Date *</label>
+  <input type="datetime-local" formControlName="doTillDate" class="input-field">
+</div>
+
+<div class="form-group">
+  <label class="form-label">Category *</label>
+  <select formControlName="idCategories" class="input-field select-field">
+    <option [ngValue]="null" disabled>Select a category...</option>
+    <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+  </select>
+</div>
+
+    <div class="checkbox-group">
+      <input type="checkbox" formControlName="isRepetitive" id="isRepetitive" class="checkbox-input" />
+      <label for="isRepetitive" class="checkbox-label">This is a recurring task</label>
+    </div>
+
+    <div *ngIf="taskForm.get('isRepetitive')?.value" class="form-group slide-down">
+      <label class="form-label">Repeat Every (days)</label>
+      <input type="number" formControlName="howOften" min="1" class="input-field">
+    </div>
+
+    <div class="button-group">
+      <button type="submit" [disabled]="taskForm.invalid || isSubmitting" class="btn btn-submit">
+        {{ isSubmitting ? '⏳ Збереження...' : (taskToEdit ? '✓ Підтвердити зміни' : '✓ Створити завдання') }}
+      </button>
+      
+      <button *ngIf="taskToEdit" type="button" (click)="onCancel()" class="btn btn-cancel">
+        Скасувати
+      </button>
+    </div>
+
+    <div *ngIf="successMessage" class="alert alert-success">✓ {{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="alert alert-error">✗ {{ errorMessage }}</div>
+    
+  </form>
+</div>

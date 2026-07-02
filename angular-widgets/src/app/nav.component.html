@@ -1,0 +1,21 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">📋 To-Do List</div>
+    <div class="nav-links">
+      <a routerLink="/" routerLinkActive="active-link" class="nav-link">Home</a>
+      <a routerLink="/tasks" routerLinkActive="active-link" class="nav-link">Tasks</a>
+      
+      <ng-container *ngIf="!(authService.isLoggedIn$ | async)">
+        <a routerLink="/register" class="nav-link">Register</a>
+        <a routerLink="/login" class="nav-link">Log in</a>
+      </ng-container>
+
+      <ng-container *ngIf="authService.isLoggedIn$ | async">
+        <span class="nav-link" (click)="onLogout()" style="cursor: pointer;">Logout</span>
+      </ng-container>
+
+      <a routerLink="/search" class="nav-link">Search</a>
+      <a routerLink="/filter" class="nav-link">Filter</a>
+    </div>
+  </div>
+</nav>

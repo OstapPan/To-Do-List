@@ -1,0 +1,56 @@
+.task-list-wrapper { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+.header { display: flex; justify-content: space-between; margin-bottom: 1.5rem; }
+.btn-refresh { background: #3b82f6; color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; }
+.task-table { width: 100%; border-collapse: collapse; }
+.task-table th, .task-table td { padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: left; }
+.btn-edit { color: #2563eb; margin-right: 0.5rem; border: none; background: none; cursor: pointer; }
+.btn-delete { color: #dc2626; border: none; background: none; cursor: pointer; }
+.badge-blue { background: #dbeafe; color: #1e40af; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; }
+.badge-green { background: #dcfce7; color: #166534; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; }
+.badge-gray { background: #f3f4f6; color: #374151; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; }
+/* Контейнер пагінації */
+.pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;   /* Відповідає mt-4 / margin-bottom у header */
+  padding-top: 1.25rem; /* Відступ від таблиці до кнопок */
+  border-top: 1px solid #e5e7eb; /* Тонка лінія розмежування, як у таблиці */
+  color: #374151;       /* Колір тексту (темно-сірий, як у бейджах) */
+  font-size: 0.875rem;  /* Зручний розмір шрифту */
+  font-weight: 500;
+}
+
+/* Кнопки пагінації */
+.btn-pagination {
+  background: white;
+  color: #374151;
+  padding: 0.5rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease; /* Плавний ефект при наведенні */
+}
+
+/* Ефект при наведенні на активну кнопку */
+.btn-pagination:hover:not(:disabled) {
+  background: #f3f4f6;     /* Світло-сірий фон */
+  border-color: #3b82f6;   /* Синя рамка, як колір кнопки refresh */
+  color: #3b82f6;          /* Синій текст */
+}
+
+/* Стиль для заблокованої кнопки (disabled) */
+.btn-pagination:disabled {
+  background: #f9fafb;
+  color: #9ca3af;          /* Текст стає блідим */
+  border-color: #e5e7eb;
+  cursor: not-allowed;     /* Курсор заборони */
+  opacity: 0.7;
+}
+
+/* Додаткові утиліти про всяк випадок (якщо класи Tailwind не підтягуються самі) */
+.flex { display: flex; }
+.justify-between { justify-content: space-between; }
+.items-center { align-items: center; }
+.mt-4 { margin-top: 1.5rem; }

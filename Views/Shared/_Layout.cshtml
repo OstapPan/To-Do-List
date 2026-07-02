@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TO_DO_List</title>
+    <base href="/" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Angular Styles -->
+    <link rel="stylesheet" href="~/widget/styles.css" asp-append-version="true" />
+</head>
+<body>
+    <!-- Angular Root Component -->
+    <app-root></app-root>
+
+    @RenderBody()
+
+    <!-- Angular Application Bundle -->
+    <script src="~/widget/main.js" type="module" asp-append-version="true"></script>
+</body>
+</html>

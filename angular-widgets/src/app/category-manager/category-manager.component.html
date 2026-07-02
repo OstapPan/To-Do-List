@@ -1,0 +1,84 @@
+<div class="manager-container">
+  
+  <div class="card">
+    <h2 class="card-title">➕ Create New Category</h2>
+    
+    <form [formGroup]="categoryForm" (ngSubmit)="onAdd()" class="form-row">
+      <input
+        formControlName="name"
+        placeholder="Enter category name..."
+        class="input-field"
+      />
+      <button
+        type="submit"
+        [disabled]="categoryForm.invalid || isSubmitting"
+        class="btn btn-add"
+      >
+        {{ isSubmitting ? '⏳' : '✓' }} Add
+      </button>
+    </form>
+
+    <div *ngIf="successMessage" class="alert alert-success">
+      ✓ {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-error">
+      ✗ {{ errorMessage }}
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">📂 Your Categories</h3>
+      <button (click)="loadCategories()" class="btn btn-refresh">
+        🔄 Refresh
+      </button>
+    </div>
+
+    <div *ngIf="isLoading" class="status-message">
+      ⏳ Loading categories...
+    </div>
+
+    <div *ngIf="!isLoading && categories.length > 0" class="categories-grid">
+      <div *ngFor="let category of categories" class="category-card">
+        <div class="category-info">
+          <div class="category-details">
+            <h4 class="category-name">{{ category.name }}</h4>
+           
+          </div>
+          <span class="category-icon">📋</span>
+        </div>
+        
+        <button (click)="onDelete(category.id)" class="btn btn-delete">
+          🗑️ Delete
+        </button>
+      </div>
+    </div>
+    <div *ngIf="!isLoading && totalCategories > 0" class="pagination-controls flex justify-between mt-4">
+      <button (click)="prevPage()" [disabled]="currentPage === 1" class="btn-pagination">⬅️ Prev</button>
+      <span>Page {{ currentPage }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage * pageSize >= totalCategories" class="btn-pagination">Next ➡️</button>
+    </div>
+
+    <div *ngIf="!isLoading && categories.length === 0" class="empty-state">
+      <div class="empty-icon">📭</div>
+      <p>No categories yet. Create one to organize your tasks!</p>
+    </div>
+  </div>
+
+  <div class="modal-overlay" *ngIf="showDeleteModal" (click)="closeDeleteModal()">
+    <div class="modal-box" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <span class="modal-warning-icon">⚠️</span>
+        <h3 class="modal-title">Видалення категорії</h3>
+      </div>
+      <div class="modal-body">
+        <p>Ви впевнені, що хочете видалити цю категорію? Цю дію не можна буде скасувати.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-cancel" (click)="closeDeleteModal()">Скасувати</button>
+        <button class="btn btn-confirm-delete" (click)="confirmDelete()">Так, видалити</button>
+      </div>
+    </div>
+  </div>
+
+</div>

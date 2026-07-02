@@ -1,0 +1,64 @@
+<div class="task-list-wrapper">
+  <div class="header">
+    <h2 class="title">🔍 Пошук завдань за категорією</h2>
+  </div>
+
+  <!-- Блок фільтрації / вибору категорії -->
+  <div class="filter-container" style="margin-bottom: 20px;">
+    <label for="categorySelect" style="font-weight: bold; margin-right: 10px;">Оберіть категорію:</label>
+    <select 
+      id="categorySelect" 
+      [(ngModel)]="selectedCategoryId" 
+      (change)="onCategoryChange()"
+      style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; min-width: 200px;"
+    >
+      <option value="">-- Всі категорії --</option>
+      <option *ngFor="let category of categories" [value]="category.id">
+        {{ category.name }}
+      </option>
+    </select>
+  </div>
+
+  <!-- Індикатори завантаження та помилок -->
+  <div *ngIf="isLoading" class="loading">⏳ Loading tasks...</div>
+  <div *ngIf="errorMessage" class="error-msg">{{ errorMessage }}</div>
+
+  <!-- Таблиця з результатами пошуку -->
+  <div *ngIf="!isLoading && tasks.length > 0" class="table-container">
+    <table class="task-table">
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>Description</th>
+          <th>Due Date</th>
+          <th>Category</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks">
+          <td>
+            <div class="task-name">{{ task.toDo }}</div>
+          </td>
+          <td> 
+            <div *ngIf="task.description" class="task-desc">{{ task.description }}</div>
+          </td>
+          <td>{{ task.doTillDate | date:'short' }}</td>
+          <td>
+            <span *ngIf="task.category" class="badge-blue">{{ task.category.name }}</span>
+          </td>
+          <td>
+            <span [ngClass]="task.isRepetitive ? 'badge-green' : 'badge-gray'">
+              {{ task.isRepetitive ? 'Recurring (' + task.howOften + 'd)' : 'One-time' }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Повідомлення, якщо для вибраної категорії немає тасок -->
+  <div *ngIf="!isLoading && tasks.length === 0 && selectedCategoryId" class="text-gray-500 mt-4 text-center">
+    Завдань у цій категорії не знайдено.
+  </div>
+</div>

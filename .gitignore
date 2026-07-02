@@ -1,0 +1,20 @@
+# IDEs (Visual Studio & VS Code)
+.vs/
+.vscode/
+*.user
+*.suo
+*.dbmdl
+.slnx.sqlite
+
+# .NET Build and Publish Folders
+bin/
+obj/
+
+# Temporary files from your list
+temp_home_html.txt
+temp_served_home.html
+
+# Angular / Node
+angular-widgets/node_modules/
+angular-widgets/dist/
+angular-widgets/.angular/

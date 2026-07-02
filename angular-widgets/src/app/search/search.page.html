@@ -1,0 +1,66 @@
+<div class="task-list-wrapper">
+  <div class="header">
+    <h2 class="title">🔍 Пошук завдань за текстом</h2>
+  </div>
+
+  <!-- Блок текстового пошуку -->
+  <div class="filter-container" style="margin-bottom: 20px; display: flex; gap: 10px; align-items: center;">
+    <label for="searchInput" style="font-weight: bold;">Текст (Title або Description):</label>
+    <input 
+      type="text" 
+      id="searchInput" 
+      [(ngModel)]="searchText" 
+      (keyup.enter)="onSearch()"
+      placeholder="Введіть текст для пошуку..."
+      style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; flex: 1; max-width: 400px;"
+    />
+    <button 
+      (click)="onSearch()"
+      style="padding: 8px 16px; border-radius: 4px; background-color: #007bff; color: white; border: none; cursor: pointer;">
+      Шукати
+    </button>
+  </div>
+
+  <!-- Індикатори завантаження та помилок -->
+  <div *ngIf="isLoading" class="loading">⏳ Loading tasks...</div>
+  <div *ngIf="errorMessage" class="error-msg">{{ errorMessage }}</div>
+
+  <!-- Таблиця з результатами пошуку -->
+  <div *ngIf="!isLoading && tasks.length > 0" class="table-container">
+    <table class="task-table">
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>Description</th>
+          <th>Due Date</th>
+          <th>Category</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks">
+          <td>
+            <div class="task-name">{{ task.toDo }}</div>
+          </td>
+          <td> 
+            <div *ngIf="task.description" class="task-desc">{{ task.description }}</div>
+          </td>
+          <td>{{ task.doTillDate | date:'short' }}</td>
+          <td>
+            <span *ngIf="task.category" class="badge-blue">{{ task.category.name }}</span>
+          </td>
+          <td>
+            <span [ngClass]="task.isRepetitive ? 'badge-green' : 'badge-gray'">
+              {{ task.isRepetitive ? 'Recurring (' + task.howOften + 'd)' : 'One-time' }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Повідомлення, якщо нічого не знайдено -->
+  <div *ngIf="!isLoading && tasks.length === 0 && hasSearched" class="text-gray-500 mt-4 text-center">
+    Завдань за запитом "<b>{{searchText}}</b>" не знайдено.
+  </div>
+</div>

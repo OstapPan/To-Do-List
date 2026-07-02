@@ -1,0 +1,307 @@
+/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: linear-gradient(135deg, #f8fbff 0%, #eef4ff 100%);
+  color: #0f172a;
+}
+
+body {
+  min-height: 100vh;
+}
+
+app-root {
+  display: block;
+  min-height: 100vh;
+}
+/* ==========================================
+   ЗАГАЛЬНІ СТИЛІ ДЛЯ СТОРІНОК
+   ========================================== */
+.home-container, .tasks-container, .categories-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ==========================================
+   ГОЛОВНА СТОРІНКА (HOME PAGE)
+   ========================================== */
+
+/* Герой-банер */
+.home-hero {
+  background: linear-gradient(135deg, #eff6ff 0%, #e0e7ff 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+  letter-tight: -0.025em;
+}
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: #64748b;
+}
+
+/* Сітка карток */
+.home-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .home-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Картки швидких дій */
+.home-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  padding: 2rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.home-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.card-blue { border-left: 5px solid #3b82f6; }
+.card-green { border-left: 5px solid #10b981; }
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.25rem;
+}
+.card-subtitle {
+  color: #64748b;
+  font-size: 0.95rem;
+}
+.card-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+.card-desc {
+  color: #475569;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+/* Кнопки на картках */
+.card-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #ffffff;
+  transition: background-color 0.15s ease;
+}
+.btn-blue { background-color: #2563eb; }
+.btn-blue:hover { background-color: #1d4ed8; }
+.btn-green { background-color: #059669; }
+.btn-green:hover { background-color: #047857; }
+
+/* Секція функціоналу */
+.features-section {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+}
+.features-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.feature-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.feature-icon {
+  font-size: 1.5rem;
+  background-color: #f8fafc;
+  padding: 0.5rem;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+}
+.feature-name {
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.25rem;
+}
+.feature-desc {
+  color: #64748b;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+/* ==========================================
+   СТОРІНКА ТАСОК (TASKS PAGE)
+   ========================================== */
+.tasks-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 1024px) {
+  .tasks-layout-grid {
+    grid-template-columns: 1fr 2fr; /* Форма займає 1/3, Список 2/3 */
+  }
+}
+.form-panel, .list-panel {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================
+   СТОРІНКА ПРИВАТНОСТІ (PRIVACY PAGE)
+   ========================================== */
+.privacy-container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  padding: 2.5rem;
+  max-width: 48rem; /* 3xl */
+  margin: 0 auto;
+}
+.privacy-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 0.75rem;
+}
+.privacy-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.privacy-section h2 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+}
+.privacy-section p {
+  color: #475569;
+  line-height: 1.6;
+}
+.privacy-list {
+  list-style-type: disc;
+  list-style-position: inside;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 0.5rem;
+  color: #475569;
+}
+.privacy-email {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+.privacy-email:hover {
+  text-decoration: underline;
+}
+/* ==========================================
+   ГЛОБАЛЬНІ СТИЛІ ФОРМ ТА ЕЛЕМЕНТІВ
+   ========================================== */
+
+/* Обгортка для полів вводу */
+.form-group { 
+  margin-bottom: 1.25rem; 
+}
+
+.form-group label { 
+  display: block; 
+  margin-bottom: 0.5rem; 
+  font-weight: 500; 
+  color: #475569; 
+}
+
+/* Стандартний інпут */
+.form-control { 
+  width: 100%; 
+  padding: 0.75rem; 
+  border: 1px solid #cbd5e1; 
+  border-radius: 8px; 
+  outline: none; 
+  transition: border-color 0.2s, box-shadow 0.2s; 
+  box-sizing: border-box; 
+  font-size: 1rem;
+}
+
+.form-control:focus { 
+  border-color: #3b82f6; 
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15); 
+}
+
+/* Валідація та помилки */
+.error-text { 
+  color: #ef4444; 
+  font-size: 0.85rem; 
+  margin-top: 0.35rem; 
+}
+
+.server-error { 
+  margin-bottom: 1rem; 
+  text-align: center; 
+  font-weight: 500; 
+  padding: 0.75rem;
+  background-color: #fef2f2;
+  border-radius: 8px;
+}
+
+/* Утиліти (Допоміжні класи) */
+.w-full { 
+  width: 100%; 
+  text-align: center; 
+  cursor: pointer; 
+  border: none; 
+}
+
+.w-full:disabled { 
+  background-color: #94a3b8; 
+  cursor: not-allowed; 
+  opacity: 0.7;
+}
