@@ -16,7 +16,7 @@
         <label>Пароль</label>
         <input type="password" formControlName="password" class="form-control" placeholder="Мінімум 8 символів">
         <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid" class="error-text">
-          Пароль надто простий (мінімум 8 символів, 1 велика літера, 1 цифра)
+          Пароль надто простий (мінімум 8 символів, 1 велика літера, 1 цифра , 1 спецсимвол)
         </div>
       </div>
 

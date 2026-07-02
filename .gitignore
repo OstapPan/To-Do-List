@@ -16,5 +16,5 @@ temp_served_home.html
 
 # Angular / Node
 angular-widgets/node_modules/
-angular-widgets/dist/
+angular-widgets/dist/ 
 angular-widgets/.angular/
